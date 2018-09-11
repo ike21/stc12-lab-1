@@ -13,7 +13,7 @@ public class Reader implements Comparison {
     public void getOccurencies(String[] sources, String[] words, String res) throws IOException {
         ConcurrentHashMap list = getText(sources);
         CopyOnWriteArrayList<String> list2 = read(list, words);
-        write(list2,res);
+        write(list2, res);
 
     }
 
@@ -53,7 +53,7 @@ public class Reader implements Comparison {
         return list2;
     }
 
-    private void write(CopyOnWriteArrayList<String> list,String res) throws IOException {
+    private void write(CopyOnWriteArrayList<String> list, String res) throws IOException {
         File file = new File(res);
         BufferedWriter writer = new BufferedWriter(new FileWriter(file));
         for (String a : list) {
@@ -61,5 +61,6 @@ public class Reader implements Comparison {
             writer.write("\n");
         }
         file.deleteOnExit();
+        
     }
 }
