@@ -9,6 +9,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WordsSearcher {
+    private Pattern pattern;
+
+    WordsSearcher() {
+        this.pattern = Pattern.compile("[.!?]");
+    }
     public String getSentence(String str, String[] words) {
         StringBuilder sentenceList = new StringBuilder();
         StringBuilder buffer = new StringBuilder();
@@ -32,8 +37,7 @@ public class WordsSearcher {
     }
 
     private boolean isSentenceEnd(char ch) {
-        Pattern p = Pattern.compile("[.!?]");
-        Matcher m = p.matcher(String.valueOf(ch));
+        Matcher m = pattern.matcher(String.valueOf(ch));
         return m.find();
     }
 }
