@@ -1,5 +1,7 @@
 package ru.innopolis.stc12.lab;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
@@ -9,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class WordsSearcher {
+    final static Logger LOGGER = Logger.getLogger(WordsSearcher.class);
     private Pattern pattern;
 
     WordsSearcher() {
@@ -31,7 +34,7 @@ public class WordsSearcher {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LOGGER.error("Exception: " + e);
         }
         return sentenceList.toString();
     }
